@@ -1,0 +1,194 @@
+html {
+    position: relative;
+    /* scroll-behavior: smooth;
+    scroll-padding: 50px; */
+}
+
+body {
+    margin-bottom: 200px;
+    margin-top: 25px;
+    overflow-x: hidden;
+}
+
+nav .navbar-brand {
+    font-family: 'Pacifico', cursive;
+}
+
+.jumbotron {
+    height: 500px;
+    background-image: url(../img/header-bg.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -130px;
+    color: #eaeaea;
+    overflow: hidden;
+}
+
+.jumbotron img {
+    width: calc(13vw + 100px);
+    border: 5px solid #eaeaea;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .7);
+}
+
+.jumbotron h1, .jumbotron p {
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .7);
+}
+
+hr {
+    width: 250px;
+    border-top: 3px solid #555;
+}
+
+section {
+    min-height: 600px;
+}
+
+.portfolio {
+    background-color: #eee;
+}
+
+.contact {
+    min-height: 800px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+    padding-top: 30px;
+}
+
+footer p {
+    color: #eee;
+    font-size: .9em;
+}
+
+footer p svg {
+    color: salmon;
+}
+
+footer img {
+    width: 40px;
+}
+
+footer h4 {
+
+    color: #eee;
+    margin-top: -5px;
+}
+
+footer a img {
+    transition: .3s;
+    filter: grayscale(100);
+    margin-left: 10px;
+}
+
+footer a img:hover {
+    filter: grayscale(0);
+}
+
+footer a .instagram {
+    border-radius: 50%;
+}
+
+.overlay {
+    overflow: hidden;
+    position: fixed;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1030;
+    transition: .5s;
+}
+
+.overlay:target {
+    /* padding-left: calc(20vw - 55px);
+    padding-top: calc(20vh + 50px); */
+    background-color: rgba(0, 0, 0, .7);
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0
+}
+
+.overlay img {
+    border: 10px solid white;
+    border-radius: 5px;
+}
+
+.overlay:target img {
+    animation: zoomFade 1s alternate forwards;
+}
+
+.overlay .x {
+    position: absolute;
+    display: block;
+    background-color: white;
+    width: 35px;
+    height: 3px;
+    border: 3px;
+    top: 10vh;
+    right: 10vw;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.overlay .x:nth-child(1) {
+    transform: rotate(0deg);
+}
+.overlay .x:nth-child(2) {
+    transform: rotate(0deg);
+    
+}
+
+.overlay:target .x:nth-child(1){
+    animation: plus .7s .5s  alternate forwards;
+}
+
+.overlay:target .x:nth-child(2){
+    animation: minus .7s .5s  alternate forwards;
+}
+
+
+/* key Frame */
+@keyframes zoomFade {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes minus {
+    0% {
+        opacity: 0;
+        transform: rotate(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes plus {
+    0% {
+        opacity: 0;
+        transform: rotate(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(45deg);
+    }
+}
