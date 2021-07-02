@@ -20,7 +20,7 @@ nav .navbar-brand {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0 -130px;
+    background-position: 0px -130px;
     color: #eaeaea;
     overflow: hidden;
 }
@@ -31,7 +31,8 @@ nav .navbar-brand {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .7);
 }
 
-.jumbotron h1, .jumbotron p {
+.jumbotron h1,
+.jumbotron p {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, .7);
 }
 
@@ -142,17 +143,18 @@ footer a .instagram {
 .overlay .x:nth-child(1) {
     transform: rotate(0deg);
 }
+
 .overlay .x:nth-child(2) {
     transform: rotate(0deg);
-    
+
 }
 
-.overlay:target .x:nth-child(1){
-    animation: plus .7s .5s  alternate forwards;
+.overlay:target .x:nth-child(1) {
+    animation: plus .7s .5s alternate forwards;
 }
 
-.overlay:target .x:nth-child(2){
-    animation: minus .7s .5s  alternate forwards;
+.overlay:target .x:nth-child(2) {
+    animation: minus .7s .5s alternate forwards;
 }
 
 
