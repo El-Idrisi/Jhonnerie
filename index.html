@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
         integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="css/bootstrap-utilities.css">
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <link rel="stylesheet" href="css/style.css">
@@ -148,23 +150,26 @@
 
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <form>
+
+
+
+                    <form name="contact">
                         <div class="form-group">
                             <label for="nama">Nama:</label>
-                            <input type="text" id="nama" placeholder="Nama" class="form-control">
+                            <input type="text" id="nama" placeholder="Nama" class="form-control" name="nama">
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" id=email" placeholder="Email" class="form-control">
+                            <input type="email" id="email" placeholder="Email" class="form-control" name="email">
                         </div>
 
                         <div class="form-group">
                             <label for="tel">No Telp:</label>
-                            <input type="tel" id="tel" placeholder="No Telp" class="form-control">
+                            <input type="tel" id="tel" placeholder="No Telp" class="form-control" name="telepon">
                         </div>
 
-                        <select class="form-control">
+                        <select class="form-control" name="category">
                             <option>-- Pilih Kategory --</option>
                             <option>Web Developer</option>
                             <option>Desingner</option>
@@ -173,10 +178,21 @@
 
                         <div class="form-group">
                             <label for="pesan">Masukan Pesan</label>
-                            <textarea rows="10" class="form-control" id="pesan"></textarea>
+                            <textarea rows="10" class="form-control" id="pesan" name="pesan"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Kirim!</button>
+                        <div class="alert alert-success alert-dismissible d-none" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <strong>Terima Kasih!</strong> Pesan anda sudah di terima.
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-kirim">Kirim!</button>
+
+                        <button class="btn btn-primary d-none btn-loading" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
 
                     </form>
                 </div>
@@ -234,6 +250,40 @@
     </script>
 
     <script src="js/java.js"></script>
+
+    <script>
+        const scriptURL =
+            'https://script.google.com/macros/s/AKfycbxXM5qZLONiUWaNcPoihSd5rEzgv59znyR2RTgwpbfs0Vwg5aNIouZDUElLN_-CGQmA/exec'
+        const form = document.forms['contact']
+        const btnKirim = document.querySelector('.btn-kirim');
+        const btnLoading = document.querySelector('.btn-loading');
+        const alert = document.querySelector('.alert');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            // kETIKA TOMBOL SUMBIT
+            // TAMPILKAN TOMBOL LOADING, HILANGKAN TOMBOL KIRIM
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    // TAMPILKAN TOMBOL KIRIM, HILANGKAN TOMBOL LOADING
+                    btnLoading.classList.toggle('d-none');
+                    btnKirim.classList.toggle('d-none');
+                    // TAMPILKAN ALERT
+                    alert.classList.toggle('d-none');
+                    // RESET FORM
+                    form.reset()
+                    console.log('Success!', response)
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
